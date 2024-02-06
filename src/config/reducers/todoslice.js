@@ -17,9 +17,15 @@ export const todoSlice = createSlice({
         },
         removeTodo:(state , action)=>{
             state.todos.splice(action.payload.index, 1)
+        },
+        editTodo:(state, action)=>{
+            state.todos.splice(action.payload.index, 1 , {
+                 title:action.payload.title,
+                 id: nanoid()
+            })
         }
     }
 })
 
-export const {addTodo, removeTodo} = todoSlice.actions
+export const {addTodo, removeTodo, editTodo} = todoSlice.actions
 export default todoSlice.reducer
